@@ -14,7 +14,7 @@ diff --git a/drivers/input/keyboard/atkbd.c b/drivers/input/keyboard/atkbd.c
 index c8ad55f26ea8..de8edab3cb0f 100644
 --- a/drivers/input/keyboard/atkbd.c
 +++ b/drivers/input/keyboard/atkbd.c
-@@ -1923,6 +1923,13 @@ static const struct dmi_system_id atkbd_dmi_quirk_table[] __initconst = {
+@@ -1926,6 +1926,13 @@ static const struct dmi_system_id atkbd_dmi_quirk_table[] __initconst = {
  		},
  		.callback = atkbd_deactivate_fixup,
  	},
