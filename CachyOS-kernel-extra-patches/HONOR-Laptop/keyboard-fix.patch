@@ -41,7 +41,7 @@ index 6c999d89ee4b..422e28ad1e8e 100644
 +		},
 +		.callback = atkbd_deactivate_fixup,
 +	},
- 	{ }
+	{ }
  };
  
 ---
