@@ -16,7 +16,7 @@
 +	{
 +		.matches = {
 +			DMI_EXACT_MATCH(DMI_SYS_VENDOR, "HUAWEI"),
-+			DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "VGHH-XX"),
++			DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ENHH-XX"),
 +		},
 +		.driver_data = "GCTI2607",
 +	},
