@@ -1,0 +1,47 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: AlexDaichendt <alex@daichendt.dev>
+Date: Fri, 22 Aug 2026 13:40:00 +0000
+Subject: [PATCH] media: ipu-bridge: Add GalaxyCore GC2607 sensor entry and
+ HUAWEI MateBook X DMI quirk
+
+Add the ACPI HID "GCTI2607" with link frequency 336000000 (336 MHz,
+672 Mbps/lane DDR) to the ipu_supported_sensors table so the IPU6
+bridge software-node graph is built for the GalaxyCore GC2607 camera
+sensor found on the HUAWEI MateBook X Pro (VGHH-XX, Intel IPU6 /
+Meteor Lake).
+
+Also add a DMI quirk for the HUAWEI VGHH-XX to the
+upside_down_sensor_dmi_ids table, since the GC2607 sensor is physically
+mounted inverted without reporting a rotation of 180 in either the SSDB
+or _PLD ACPI objects.
+
+Source: https://github.com/AlexDaichendt/gc2607-camera-linux
+
+Signed-off-by: AlexDaichendt <alex@daichendt.dev>
+---
+
+--- a/drivers/media/pci/intel/ipu-bridge.c	2026-08-22 13:40:59.031330732 +0000
++++ b/drivers/media/pci/intel/ipu-bridge.c	2026-08-22 13:40:59.039330756 +0000
+@@ -71,6 +71,8 @@ static const struct ipu_sensor_config ip
+ 	IPU_SENSOR_CONFIG("INT347A", 1, 360000000),
+ 	/* Omnivision OV7251 */
+ 	IPU_SENSOR_CONFIG("INT347E", 1, 319200000),
++	/* GalaxyCore GC2607 */
++	IPU_SENSOR_CONFIG("GCTI2607", 1, 336000000),
+ 	/* Hynix Hi-556 */
+ 	IPU_SENSOR_CONFIG("INT3537", 1, 437000000),
+ 	/* Lontium lt6911uxe */
+@@ -192,6 +194,13 @@ static const struct dmi_system_id upside
+ 		},
+ 		.driver_data = "OVTI02E1",
+ 	},
++	{
++		.matches = {
++			DMI_EXACT_MATCH(DMI_SYS_VENDOR, "HUAWEI"),
++			DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "VGHH-XX"),
++		},
++		.driver_data = "GCTI2607",
++	},
+ 	{} /* Terminating entry */
+ };
+ 
