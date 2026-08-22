@@ -1,6 +1,6 @@
---- a/drivers/media/pci/intel/ipu-bridge.c
-+++ b/drivers/media/pci/intel/ipu-bridge.c
-@@ -70,6 +70,8 @@ static const struct ipu_sensor_config ipu_supported_sensors[] = {
+--- a/drivers/media/pci/intel/ipu-bridge.c	2026-08-22 14:01:59.734992868 +0000
++++ b/drivers/media/pci/intel/ipu-bridge.c	2026-08-22 13:40:59.039330756 +0000
+@@ -71,6 +71,8 @@ static const struct ipu_sensor_config ip
  	IPU_SENSOR_CONFIG("INT347A", 1, 360000000),
  	/* Omnivision OV7251 */
  	IPU_SENSOR_CONFIG("INT347E", 1, 319200000),
@@ -9,16 +9,17 @@
  	/* Hynix Hi-556 */
  	IPU_SENSOR_CONFIG("INT3537", 1, 437000000),
  	/* Lontium lt6911uxe */
-@@ -192,6 +194,13 @@ static const struct dmi_system_id upside_down_sensor_dmi_ids[] = {
+@@ -192,6 +194,13 @@ static const struct dmi_system_id upside
  		},
  		.driver_data = "OVTI02E1",
  	},
 +	{
 +		.matches = {
 +			DMI_EXACT_MATCH(DMI_SYS_VENDOR, "HUAWEI"),
-+			DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ENHH-XX"),
++			DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ENZH-XX"),
 +		},
 +		.driver_data = "GCTI2607",
 +	},
  	{} /* Terminating entry */
  };
+ 
